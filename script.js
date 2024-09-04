@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             input.classList.add('focused');
         });
 
-        input.addEventListener('blur', () => {
+        input.addEventListener('focused', () => {
             input.classList.remove('focused');
         });
     });
