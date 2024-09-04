@@ -50,10 +50,14 @@ codes.forEach((code, idx) => {
                 codes[idx + 1].focus();
             }
         } else if (event.key === "Backspace") {
-            if (code.value === "" && idx > 0) {
-                // Move focus to the previous input if it's empty and exists
+            event.preventDefault(); // Prevent default behavior
+
+            // Clear the value of the current input
+            code.value = "";
+
+            // Move focus to the previous input if it exists
+            if (idx > 0) {
                 codes[idx - 1].focus();
-                codes[idx - 1].value = "";
             }
         }
     });
