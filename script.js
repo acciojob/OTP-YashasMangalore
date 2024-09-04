@@ -47,7 +47,7 @@ codes.forEach((code, idx) => {
 
             // Move focus to the next input if it exists
             if (idx < codes.length - 1) {
-                codes[idx + 1].focus();
+                codes[idx + 1].focused();
             }
         } else if (event.key === "Backspace") {
             event.preventDefault(); // Prevent default behavior
@@ -57,7 +57,7 @@ codes.forEach((code, idx) => {
 
             // Move focus to the previous input if it exists
             if (idx > 0) {
-                codes[idx - 1].focus();
+                codes[idx - 1].focused();
             }
         }
     });
