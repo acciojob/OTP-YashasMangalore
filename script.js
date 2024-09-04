@@ -33,32 +33,52 @@
 //     });
 // });
 
-const codes = document.querySelectorAll('.code');
+document.addEventListener('DOMContentLoaded', () => {
+    const codes = document.querySelectorAll('.code');
 
-// Assign IDs and add event listeners
-codes.forEach((code, idx) => {
-    code.setAttribute("id", `code-${idx + 1}`);
-    
-    code.addEventListener('keydown', (event) => {
-        event.preventDefault();
-
-        if (event.key >= "0" && event.key <= "9") {
-            code.value = event.key;
-
-            // Move focus to the next input if it exists
-            if (idx < codes.length - 1) {
-                codes[idx + 1].focused();
+    codes.forEach((code, idx) => {
+        // Set unique ID if needed
+        code.setAttribute('id', `code-${idx + 1}`);
+        
+        // Event listener for keydown events
+        code.addEventListener('keydown', (event) => {
+            if (event.key >= '0' && event.key <= '9') {
+                event.preventDefault();
+                
+                // Set value and focus next input
+                code.value = event.key;
+                if (idx < codes.length - 1) {
+                    codes[idx + 1].focus();
+                }
+            } else if (event.key === 'Backspace') {
+                event.preventDefault();
+                
+                // Clear current input and focus previous input
+                if (code.value === '' && idx > 0) {
+                    codes[idx - 1].focus();
+                    codes[idx - 1].value = '';
+                } else {
+                    code.value = '';
+                }
             }
-        } else if (event.key === "Backspace") {
-            event.preventDefault(); // Prevent default behavior
+        });
 
-            // Clear the value of the current input
-            code.value = "";
-
-            // Move focus to the previous input if it exists
-            if (idx > 0) {
-                codes[idx - 1].focused();
+        // Event listener for input events to ensure only one character
+        code.addEventListener('input', () => {
+            if (code.value.length > 1) {
+                code.value = code.value.slice(-1);
             }
-        }
+        });
+
+        // Event listener for focus events
+        code.addEventListener('focus', () => {
+            codes.forEach(input => input.classList.remove('focused'));
+            code.classList.add('focused');
+        });
+
+        // Event listener for blur events
+        code.addEventListener('blur', () => {
+            code.classList.remove('focused');
+        });
     });
 });

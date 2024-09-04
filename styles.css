@@ -1,3 +1,4 @@
+/* General Body Styling */
 body {
     display: flex;
     justify-content: center;
@@ -7,35 +8,46 @@ body {
     margin: 0;
 }
 
+/* OTP Container Styling */
 .otp-container {
     text-align: center;
-	padding:20px;
-	border-radius:8px;
-	box-shadow:0 0 10px rgba(0,0,0,0.1);
-	/* background:#f4f4f4; */
-	width:75%;
-	border:2px solid black;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 75%;
+    border: 2px solid black;
+    background: #f4f4f4; /* Optional: background color for container */
 }
 
+/* Heading Styling */
 #verification_heading {
     font-size: 24px;
     margin-bottom: 10px;
 }
 
+/* Subtext Styling */
 #verification_subtext {
     font-size: 16px;
     margin-bottom: 20px;
     color: #555;
 }
-#note{
-	background-color:#f4f4f4;
+
+/* Note Styling */
+#note {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
 }
+
+/* Code Container Styling */
 .code-container {
     display: flex;
     justify-content: center;
     gap: 10px;
 }
 
+/* Code Input Styling */
 .code {
     width: 40px;
     height: 40px;
@@ -44,10 +56,11 @@ body {
     border: 2px solid #ddd;
     border-radius: 5px;
     outline: none;
-    transition: border-color 0.3s;
+    transition: border-color 0.3s, background-color 0.3s;
 }
 
+/* Focused Code Input Styling */
 .code.focused {
-    border-color: #007bff; /* Change border color to blue */
-    background-color: #e9f5ff; /* Optional: change background color */
+    border-color: #007bff; /* Blue border color */
+    background-color: #e9f5ff; /* Light blue background */
 }
