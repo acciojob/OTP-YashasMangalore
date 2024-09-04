@@ -1,9 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
     const inputs = document.querySelectorAll('.code');
 
-    inputs.forEach((input, index) => {
+   inputs.forEach((input, index) => {
+        // Input event to automatically move to the next input when the current input is filled
         input.addEventListener('input', () => {
+            // Add the 'focused' class to the current input
+            input.classList.add('focused');
+            
+            // Remove the 'focused' class from other inputs
+            inputs.forEach((otherInput, otherIndex) => {
+                if (otherIndex !== index) {
+                    otherInput.classList.remove('focused');
+                }
+            });
+            
             if (input.value.length === 1 && index < inputs.length - 1) {
+                // Move focus to the next input
                 inputs[index + 1].focus();
             }
         });
