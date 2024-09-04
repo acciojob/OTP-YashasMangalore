@@ -33,24 +33,28 @@
 //     });
 // });
 
-const codes=document.querySelectorAll('.code');
-codes.forEach((code,idx)=>{
-	code.setAttribute("id",`code-${++idx}`);
-	code.addEventListener('keydown', (event) => {
-		event.preventDefault();
-		if(event.key>="0" && event.key<="9")
-		{
-			codes[idx].value=event.key;
-			codes[idx+1] && codes[idx+1].focused();
-		}
-		else if(event.key==="Backspace")
-		{
-			if(codes[idx-1])
-			{
-				codes[idx].remove('focused');
-				codes[idx-1].focused();
-				codes[idx-1].value="";
-			}
-		}
-	});
+const codes = document.querySelectorAll('.code');
+
+// Assign IDs and add event listeners
+codes.forEach((code, idx) => {
+    code.setAttribute("id", `code-${idx + 1}`);
+    
+    code.addEventListener('keydown', (event) => {
+        event.preventDefault();
+
+        if (event.key >= "0" && event.key <= "9") {
+            code.value = event.key;
+
+            // Move focus to the next input if it exists
+            if (idx < codes.length - 1) {
+                codes[idx + 1].focus();
+            }
+        } else if (event.key === "Backspace") {
+            if (code.value === "" && idx > 0) {
+                // Move focus to the previous input if it's empty and exists
+                codes[idx - 1].focus();
+                codes[idx - 1].value = "";
+            }
+        }
+    });
 });
