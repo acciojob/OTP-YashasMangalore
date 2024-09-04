@@ -47,6 +47,7 @@ body {
     transition: border-color 0.3s;
 }
 
-.code:focus {
-    border-color: #007bff;
+.code.focused {
+    border-color: #007bff; /* Change border color to blue */
+    background-color: #e9f5ff; /* Optional: change background color */
 }
