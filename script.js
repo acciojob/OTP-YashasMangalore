@@ -9,8 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         input.addEventListener('keydown', (e) => {
+            // Handle backspace to move focus to the previous input if empty
             if (e.key === 'Backspace' && input.value === '' && index > 0) {
                 inputs[index - 1].focus();
+                e.preventDefault(); // Prevent default backspace action
+            }
+            // Handle non-numeric input
+            else if (!/^[0-9]$/.test(e.key) && e.key !== 'Backspace') {
+                e.preventDefault(); // Prevent non-numeric characters
             }
         });
 
