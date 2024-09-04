@@ -21,12 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         input.addEventListener('focus', () => {
-            inputs.forEach(input => input.classList.remove('focused')); // Remove 'focused' class from all inputs
-            input.classList.add('focused'); // Add 'focused' class to the currently focused input
-        });
+		    inputs.forEach(input => input.classList.remove('focused')); // Remove 'focused' class from all inputs
+		    input.classList.add('focused'); // Add 'focused' class to the currently focused input
+		});
+		
+		input.addEventListener('blur', () => {
+		    input.classList.remove('focused');
+		});
 
-        input.addEventListener('blur', () => {
-            input.classList.remove('focused');
-        });
     });
 });
