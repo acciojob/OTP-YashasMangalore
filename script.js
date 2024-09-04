@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        input.addEventListener('focus', () => {
+        input.addEventListener('focused', () => {
             inputs.forEach(input => input.classList.remove('focused'));
             input.classList.add('focused');
         });
